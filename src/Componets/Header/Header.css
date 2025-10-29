@@ -5,7 +5,7 @@
 }
 .header-contenedor{
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #E7F2EF;
   padding: 20px 10px;
   display: flex;
   justify-content: end;
@@ -19,12 +19,12 @@
     gap: 50px;
 }
 .link{
-    color: black;
+    color: #19183B;
     text-decoration: none;
     font-weight: bold;
 }
 
 .link:hover{
-    color: rgb(104, 85, 33);
+    color: #708993;
     text-decoration-line: underline;
 }

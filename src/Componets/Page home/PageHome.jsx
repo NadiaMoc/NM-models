@@ -24,12 +24,6 @@ const PageHome = () => {
         </div>
       </div>
     </div>
-    <div className='contenedor-secundario'>
-      <PageHomeSeconds/>
-    </div>
-    </div>
-    <div>
-      <Footer/>
     </div>
     </>
   )
