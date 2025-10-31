@@ -43,7 +43,7 @@ padding: 0;
 color:#A1C2BD;
 cursor: pointer;
 }
-p{
+.titulo-redes{
     width: 250px;
 font-size: 30px;
 display: flex;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IoSearch } from "react-icons/io5";
-
+import './filtro.css'
 
 const Filtro = () => {
         const[inputValue, SetInputValue]= useState('')
@@ -22,8 +22,8 @@ const Filtro = () => {
         }
         return(
             <div className="container">
-                <IoSearch />
-                <input type="Search" onChange={(evento) =>
+                <IoSearch className='lupa-buscador'/>
+                <input placeholder='Desired characteristics' className='input-buscador' type="Search" onChange={(evento) =>
                     filterUser(evento.target.value)
                 } />
                 

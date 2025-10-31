@@ -13,7 +13,7 @@ const Footer = () => {
 return (
     <div className='Caja-footer'>
         <div className="caja-footer-redes">
-        <p>Conocenos más</p>
+        <p className='titulo-redes'>Conocenos más</p>
         <div className="Caja-redes">
             <Link className='Icono' to={'https://www.instagram.com/nadiamocse_/'}><BiLogoInstagram/></Link> 
             <Link className='Icono' to={'https://www.facebook.com/nadia.mocse/'}> <FaFacebook /></Link>

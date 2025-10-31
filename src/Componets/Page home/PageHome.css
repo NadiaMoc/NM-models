@@ -10,7 +10,7 @@
     justify-content: space-around;
     
 }
-img{
+.img-principal{
     height: 600px;
     width: 600px;
     justify-content: center;
@@ -24,8 +24,7 @@ flex-direction: column;
 text-align: center;
 justify-content: center;
 }
-
-h2{
+.titulo-principal{
 font-family: "Oswald", sans-serif;
 font-size: 90px;
 letter-spacing: 20px;
@@ -33,6 +32,7 @@ word-spacing: 30px;
 line-height: 1.0;
 }
 p{
+    color: black;
     padding: 30px;
     font-size: 40px;
 }

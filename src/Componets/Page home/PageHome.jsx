@@ -3,6 +3,8 @@ import './PageHome.css'
 import { Link } from 'react-router-dom'
 import PageHomeSeconds from '../PageHomeSeconds/PageHomeSeconds'
 import Footer from '../Footer/Footer'
+import imagen3 from '../../assets/img/Imagen3.jpg'
+import imagen2 from '../../assets/img/imagen2.jpg'
 
 
 const PageHome = () => {
@@ -12,13 +14,13 @@ const PageHome = () => {
     <div className='contenedor-principal'>
       <div className='contenedor-1'> 
         <div className='contenedor-texto'> 
-          <h2>WELCOME TO <br/> NM MODEL</h2>
+          <h2 className='titulo-principal'>WELCOME TO <br/> NM MODEL</h2>
           <p>THE FACES OF FASHION TODAY</p>
         </div>
-        <img src={''} alt="Marla Kusche" />
+        <img className='img-principal' src={imagen3} alt="Marla Kusche" />
       </div>
       <div className='contenedor-2'>
-        <img src={''} alt="Emmanuel Franklin" />
+        <img className='img-principal' src={imagen2} alt="Emmanuel Franklin" />
         <div className='contenedor-texto'> 
           <p>Discover, connect, and grow. <br/> Fashion in your hands</p>
         </div>
