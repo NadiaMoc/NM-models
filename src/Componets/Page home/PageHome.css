@@ -36,3 +36,11 @@ p{
     padding: 30px;
     font-size: 40px;
 }
+
+@media (max-width: 768px) {
+    .contenedor-principal{
+        flex-direction: column;
+        height: 2600px;
+        margin: 0;
+    }
+}

@@ -10,7 +10,7 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   position: fixed;
 }
 .link-contenedor{
@@ -28,3 +28,20 @@
     color: #708993;
     text-decoration-line: underline;
 }
+.menu-toggle{
+    display: none;
+}
+@media (max-width: 768px) {
+  .link-contenedor {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .header-contenedor {
+    justify-content: space-between;
+  }
+}
+

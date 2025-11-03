@@ -2,7 +2,7 @@
 *{
     text-decoration-line: none;
 }
-.contendo-page-home-seconds{
+.contenedor-page-home-seconds{
     background-color:#E7F2EF
 }
 .caja-contenedora-principal{
@@ -41,6 +41,18 @@ flex-direction: row;
     text-align: center;
 }
 
+
+@media (max-width: 768px){
+.caja-contenedora-principal{
+    display: grid;
+    grid-template-columns: repeat(1 ,1fr) ;
+}
+img{
+    height: 300px;
+    width: 300px;
+}
+
+}
 /*
  #19183B
  #708993
