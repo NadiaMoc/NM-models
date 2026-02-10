@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Meow+Script&family=Oswald:wght@200..700&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.a-img{
+    all: unset;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.a-img img{
+    height: 400px;
+    width: 400px;
+    padding: 20px;
+}
+
+.a-datos{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.a-img:hover{
+    background-color: #A1C2BD;
+    cursor: pointer;
+    border: #708993 solid 7px;
+}
+
+.titulo-img{
+    font-family: "Playfair Display", serif;
+    height: 100px;
+    font-size: 50px;
+    color: black;
+    padding-top: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.lista-datos{
+    list-style: none;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: #19183B;
+    padding: 0;
+    margin: 0 0 16px 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 16px;
+}
+
+.lista-datos li{
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #A1C2BD;
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+.modal-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal{
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    width: min(500px, 92vw);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modal-title{
+    margin: 0 0 8px 0;
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+}
+
+.modal-text{
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: #19183B;
+    font-size: 20px;
+}
+
+.icons-contact{
+    padding: 15px;
+gap: 20px;
+display: flex;
+flex-direction: column;
+}
+
+.contact-link{
+    color: #19183B;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+}
+
+.contenedor-link{
+display: flex;
+justify-content: start;
+gap: 120px;
+}
+
+.text-link{
+    color: #19183B;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+}
+
+@media (max-width: 768px){
+    .a-img{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .a-img img{
+        height: 300px;
+        width: 300px;
+        padding: 10px;
+    }
+
+    .a-datos{
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 0 10px 10px;
+        box-sizing: border-box;
+    }
+
+    .lista-datos{
+        grid-template-columns: 2fr;
+        width: 100%;
+        justify-items: center;
+    }
+}
+/* 
+ #19183B
+ #708993
+ #A1C2BD
+ #E7F2EF */
+

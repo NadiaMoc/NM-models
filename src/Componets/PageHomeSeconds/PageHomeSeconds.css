@@ -41,18 +41,30 @@ flex-direction: row;
     text-align: center;
 }
 
+@media (max-width: 1024px){
+    .caja-contenedora-principal{
+        grid-template-columns: 1fr;
+        gap: 20px;
+        background-color: #E7F2EF;
+        height: 100%;
+        width: 100%;
+
+    }
+}
 
 @media (max-width: 768px){
 .caja-contenedora-principal{
-    display: grid;
-    grid-template-columns: repeat(1 ,1fr) ;
-}
-img{
-    height: 300px;
-    width: 300px;
+        flex-direction: column;
+        margin: 0;
+    }
+
+button.a-img{
+    width: 100%;
 }
 
+
 }
+
 /*
  #19183B
  #708993

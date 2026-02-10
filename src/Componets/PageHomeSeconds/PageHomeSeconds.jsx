@@ -1,6 +1,6 @@
-import React from 'react'
-import  {useState}  from 'react'
+import React, { useMemo, useState } from 'react'
 import Filtro from './Filtro'
+import UserCard from './usercard'
 import aaronpellegrino from '../../assets/img/aaronpellegrino.jpg'
 import anissarezaiguia from '../../assets/img/anissarezaiguia.jpg'
 import Arianejung from '../../assets/img/Ariane Jung.jpg'
@@ -18,329 +18,228 @@ import sandrahunke from '../../assets/img/sandrahunke.jpg'
 import yasminZitman from '../../assets/img/yasminZitman.jpg'
 import marlakusche from '../../assets/img/Imagen3.jpg'
 import './PageHomeSeconds.css'
-import Detallecaracteristicas from './Detallecaracteristicas'
-        const caracteristicaspersonas =[
-    {
-        ID: 'aaronpellegrino1',
-        altura: '188cm',
-        vestimenta: '40/L',
-        zapatos:'45',
-        pecho:'100',
-        cintura:'78',
-        caderas:'98'
+import useUserData from '../../hooks/useUserData'
+
+
+
+const PageHomeSeconds = () => { 
+    const [query, setQuery] = useState('')
+    const users = [
+    { 
+    id: 1, 
+    name: "Aaron Pellegrino", 
+    imageSrc: aaronpellegrino, 
+    height: '188cm',
+    clothing: '40/L',
+    shoes:'45',
+    chest:'100',
+    waist:'78',
+    hips:'98' 
+},
+{ 
+    id: 2,
+    name: "Anissa Rezaiguia",
+    imageSrc: anissarezaiguia, 
+    height: '177cm',
+    clothing: '36/S',
+    shoes:'41',
+    chest:'81',
+    waist:'60',
+    hips:'89'
+},
+{ 
+    id: 3, name: "Ariane Jung",
+    imageSrc: Arianejung,
+    height: '176cm',
+    clothing: '36/S',
+    shoes:'40',
+    chest:'84',
+    waist:'64',
+    hips:'93'
+},
+{ 
+    id: 4,
+    name: "Azra Patkovic",
+    imageSrc: azrapatkovic,
+    height: '189cm',
+    clothing: '48',
+    shoes:'46',
+    chest:'85',
+    waist:'67',
+    hips:'90.5'
+},
+{ 
+    id: 5,
+    name: "Daniel Cihak",
+    imageSrc: danielcihak,
+    height: '189cm',
+    clothing: '48',
+    shoes:'46',
+    chest:'85',
+    waist:'67',
+    hips:'90.5' 
+},
+{
+    id:6,
+    name: 'Jens Fischer',
+    imageSrc: jensfischer,
+    height: '185cm',
+    clothing: '40/S',
+    shoes:'45',
+    chest:'103',
+    waist:'83',
+    hips:'96'
     },
     {
-        ID: 'anissarezaiguia1',
-        altura: '177cm',
-        vestimenta: '36/S',
-        zapatos:'41',
-        pecho:'81',
-        cintura:'60',
-        caderas:'89'
+        id:7,
+        name:'Justyna Wallner',
+        imageSrc: justynawallner,
+        height: '178cm',
+        clothing: '36/S',
+        shoes:'38',
+        chest:'89',
+        waist:'66',
+        hips:'95'
     },
     {
-        ID: 'arianejung1',
-        altura: '176cm',
-        vestimenta: '36/S',
-        zapatos:'40',
-        pecho:'84',
-        cintura:'64',
-        caderas:'93'
+        id:8,
+        name: 'Lauryn Butler',
+        imageSrc: laurybutler,
+        height: '178cm',
+        clothing: '34/XS',
+        shoes:'41',
+        chest:'81.3',
+        waist:'68.6',
+        hips:'86.4'
     },
     {
-        ID: 'azrapatkovic1',
-        altura: '180cm',
-        vestimenta: '34-36/S',
-        zapatos:'39',
-        pecho:'88',
-        cintura:'58',
-        caderas:'87'
+        id: 9,
+        name:'Marla Kusche',
+        imageSrc: marlakusche,
+        height: '180cm',
+        clothing: '34/36/S',
+        shoes:'39',
+        chest:'79',
+        waist:'62',
+        hips:'89'
     },
     {
-        ID: 'danielcihak1',
-        altura: '189cm',
-        vestimenta: '48',
-        zapatos:'46',
-        pecho:'85',
-        cintura:'67',
-        caderas:'90.5'
+        id: 10,
+        name:'Mathieu Leroy',
+        imageSrc: mathieuleroy,
+        height: '190cm',
+        clothing: '42/XL ',
+        shoes:'46',
+        chest:'94',
+        waist:'91',
+        hips:'104'
     },
     {
-        ID: 'jensfischer1',
-        altura: '185cm',
-        vestimenta: '40/S',
-        zapatos:'45',
-        pecho:'103',
-        cintura:'83',
-        caderas:'96'
+        id: 11,
+        name:'Mathi Diedonne',
+        imageSrc: mathisdiedonne,
+        height: '185cm',
+        clothing: '48/M',
+        shoes:'45',
+        chest:'90',
+        waist:'76',
+        hips:'88'
     },
     {
-        ID: 'justynawallner1',
-        altura: '178cm',
-        vestimenta: '36/S',
-        zapatos:'38',
-        pecho:'89',
-        cintura:'66',
-        caderas:'95'
+        id: 12,
+        name:'Mattty Boroswski',
+        imageSrc: matttyborowski,
+        height: '185cm',
+        clothing: '48/M',
+        shoes:'41',
+        chest:'84',
+        waist:'71',
+        hips:'84'
     },
     {
-        ID: 'laurynbutler1',
-        altura: '178cm',
-        vestimenta: '34/XS',
-        zapatos:'41',
-        pecho:'81.3',
-        cintura:'68.6',
-        caderas:'86.4'
+        id: 13,
+        name:'Michel Pineiro',
+        imageSrc: michelpineiro,
+        height: '187cm',
+        clothing: '48/M',
+        shoes:'44',
+        chest:'98',
+        waist:'70',
+        hips:'98'
     },
     {
-        ID: 'marlakusche1',
-        altura: '180cm',
-        vestimenta: '34/36/S',
-        zapatos:'39',
-        pecho:'79',
-        cintura:'62',
-        caderas:'89'
+        id: 14, 
+        name:'Noah Vanleeuwen',
+        imageSrc: noahvanleeuwen,
+        height: '16cm',
+        clothing: '48/M',
+        shoes:'43',
+        chest:'97',
+        waist:'76',
+        hips:'89'
     },
     {
-        ID: 'mathieuleroy1',
-        altura: '190cm',
-        vestimenta: '42/XL ',
-        zapatos:'46',
-        pecho:'94',
-        cintura:'91',
-        caderas:'104'
+        id: 15,
+        name:'Sandra Hunke',
+        imageSrc: sandrahunke,
+        height: '178cm',
+        clothing: '34/36/XS/S',
+        shoes:'39',
+        chest:'77',
+        waist:'60',
+        hips:'90'
     },
     {
-        ID: 'mathidiedonne1',
-        altura: '185cm',
-        vestimenta: '48/M',
-        zapatos:'45',
-        pecho:'90',
-        cintura:'76',
-        caderas:'88'
-    },
-    {
-        ID: 'matttyboroswski1',
-        altura: '185cm',
-        vestimenta: '48/M',
-        zapatos:'41',
-        pecho:'84',
-        cintura:'71',
-        caderas:'84'
-    },
-    {
-        ID: 'michelpineiro1',
-        altura: '187cm',
-        vestimenta: '48/M',
-        zapatos:'44',
-        pecho:'98',
-        cintura:'70',
-        caderas:'98'
-    },
-    {
-        ID: 'noahvanleeuwen1',
-        altura: '16cm',
-        vestimenta: '48/M',
-        zapatos:'43',
-        pecho:'97',
-        cintura:'76',
-        caderas:'89'
-    },
-    {
-        ID: 'sandrahunke1',
-        altura: '178cm',
-        vestimenta: '34/36/XS/S',
-        zapatos:'39',
-        pecho:'77',
-        cintura:'60',
-        caderas:'90'
-    },
-    {
-        ID: 'yasminZitman1',
-        altura: '179cm',
-        vestimenta: '36/S',
-        zapatos:'38',
-        pecho:'80',
-        cintura:'64',
-        caderas:'94'
+        id: 16,
+        name:'Yasmin Zitman',
+        imageSrc: yasminZitman,
+        height: '179cm',
+        clothing: '36/S',
+        shoes:'38',
+        chest:'80',
+        waist:'64',
+        hips:'94'
     }
-]
 
-const PageHomeSeconds = () => {
-const [caracteristicas] = useState(caracteristicaspersonas)
+];
+    const filteredUsers = useMemo(() => {
+        const normalizedQuery = query.trim().toLowerCase()
+        if (!normalizedQuery) return users
 
+        return users.filter((user) => {
+            const fieldsToSearch = [
+                `name:${user.name}`,
+                `height:${user.height}`,
+                `clothing:${user.clothing}`,
+                `shoes:${user.shoes}`,
+                `chest:${user.chest}`,
+                `waist:${user.waist}`,
+                `hips:${user.hips}`,
+                'name',
+                'height',
+                'clothing',
+                'shoes',
+                'chest',
+                'waist',
+                'hips',
+                
+            ]
 
+            return fieldsToSearch.some((value) =>
+                String(value).toLowerCase().includes(normalizedQuery)
+            )
+        })
+    }, [query, users])
 return (
     <div className="contenedor-page-home-seconds">
-    <Filtro/>
+    <Filtro value={query} onChange={setQuery} results={filteredUsers} />
     <div className="caja-contenedora-principal">
-        <a className='a-img' href="#">
-            <img src={aaronpellegrino} alt="Aaron Pellegrino" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Aaron Pellegrino</h2>
-                {caracteristicas.map((caracteristica)=>{
-            return(
-                <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.aaronpellegrino1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={anissarezaiguia} alt="Anissa Rezaiguia" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Anissa Rezaiguia </h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.anissarezaiguia1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={Arianejung} alt="Ariane Jung" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'> Ariane Jung</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.arianejung1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={azrapatkovic} alt="Azra Patkovic" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Azra Patkovic </h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.azrapatkovic1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={danielcihak} alt="Daniel Cihak" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Daniel Cihak </h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.danielcihak1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={jensfischer} alt="Jens Fischer" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Jens Fischer</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.jensfischer1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={justynawallner} alt="Justyna Wallner" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Justyna Wallner</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.justynawallner1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={laurybutler} alt="Laury Butler" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Laury Butler</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.laurybutler1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={mathieuleroy} alt="Mathie Leroy" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Mathie Leroy</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.mathieuleroy1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={mathisdiedonne} alt="Mathis Diedonne" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Mathis Diedonne</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.mathisdiedonne1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={matttyborowski} alt="Matt Tyborowski" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Matt Tyborowski</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.matttyborowski1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={michelpineiro} alt="Michel Pineiro" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Michel Pineiro</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.michelpineiro1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={noahvanleeuwen} alt="Noah van Leeuwen" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Noah van Leeuwen</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.noahvanleeuwen1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={sandrahunke} alt="Sandra Hunke" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Sandra Hunke</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.sandrahunke1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={yasminZitman} alt="Yasmin Zitman" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Yasmin Zitman</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.yasminZitman1}/>
-            )})}
-            </div>
-        </a>
-        <a className='a-img' href="#">
-            <img src={marlakusche} alt="Marla Kusche" />
-            <div className='a-datos'>
-            <h2 className='titulo-img'>Marla Kusche</h2>
-            {caracteristicas.map((caracteristica)=>{
-            return(
-            <Detallecaracteristicas caracteristica={caracteristica} key={caracteristica.marlakusche1}/>
-            )})}
-            </div>
-        </a>
+        {filteredUsers.map(user => (
+        <UserCard key={user.id} user={user} /> 
+        ))}
     </div>
     </div>
-    
+) 
 
-  )
 }
-
 export default PageHomeSeconds
-
-
