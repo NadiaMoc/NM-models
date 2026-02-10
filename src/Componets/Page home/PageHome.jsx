@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 /* import PageHomeSeconds from '../PageHomeSeconds/PageHomeSeconds' */
 import Footer from '../Footer/Footer'
 import imagen3 from '../../assets/img/Imagen3.jpg'
-import imagen2 from '../../assets/img/imagen2.jpg'
+import imagen2 from '../../assets/img/Imagen2.jpg'
 
 
 const PageHome = () => {
